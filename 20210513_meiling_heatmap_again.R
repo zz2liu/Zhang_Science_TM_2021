@@ -10,7 +10,9 @@
 #               limits=c(min(cor_mat),1))
 # vst = read.csv('/Users/zongzhiliu/OneDrive_hotmail/OneDrive/yanlab/regeneratefigures1/DE_paired.M_vs_P.csv',
 #                row.names=1)
-vst = read.csv('/Users/zongzhiliu/OneDrive_hotmail/OneDrive/yanlab/regeneratefigures1/GSE147995_vst.csv',
+
+require(heatmaply)
+vst = read.csv('data/GSE147995_vst.csv',
                 row.names=1)
 vst.z = t(scale(t(vst)))
 cor_vst = cor(vst.z)
@@ -20,7 +22,7 @@ heatmaply_cor(x=cor_vst,
               limits=c(min(cor_vst),1))
 
 # map name to new set
-info = read.csv('/Users/zongzhiliu/OneDrive_hotmail/OneDrive/yanlab/patient_info.csv',
+info = read.csv('data/patient_info.csv',
                 )
 ori = t(data.frame(strsplit(colnames(cor_vst), '.', fixed=T)))
 ori = data.frame(ori)
